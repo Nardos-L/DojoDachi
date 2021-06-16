@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="d-flex justify-content-center ">
+    <div class="mr-5">Fullness : @ViewBag.Fullness</div>
+    <div class="mr-5">Happiness : @ViewBag.Happiness</div>
+    <div class="mr-5">Meals : @ViewBag.Meals</div>
+    <div>Energy : @ViewBag.Energy</div>
+
+</div>
+<div class="d-flex justify-content-center m-5">
+    <p>You played with your DochoDachi Happiness +10, Energy -5</p>
+
+</div>
+<div class="d-flex justify-content-center ">
+    <a type="button" class="btn btn-primary mr-3" asp-controller="Home" asp-action="Feed">Feed</a>
+    <a type="button" class="btn btn-success mr-3" asp-controller="Home" asp-action="Play">Play</a>
+    <a type="button" class="btn btn-danger mr-3"asp-controller="Home" asp-action="Work">Work</a>
+    <a type="button" class="btn btn-info mr-3"asp-controller="Home" asp-action="Sleep">Sleep</a>
+</div>  
