@@ -30,7 +30,9 @@ namespace DojoDachi.Controllers
                 HttpContext.Session.SetInt32("Meals",3);
             }
 
-           
+            //HttpContext.Session.SetString("sessionMessage","");
+             
+
             int happiness = HttpContext.Session.GetInt32("Happiness").Value;
             int fullness = HttpContext.Session.GetInt32("Fullness").Value;
             int energy = HttpContext.Session.GetInt32("Energy").Value;
@@ -41,10 +43,7 @@ namespace DojoDachi.Controllers
             ViewBag.Energy = energy;
             ViewBag.Meals = meals;
 
-            // ViewBag.Hapiness = HttpContext.Session.GetInt32("Happiness").Value;
-            // ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness").Value;
-            // ViewBag.Energy = HttpContext.Session.GetInt32("Enegry").Value;
-            // ViewBag.Meals = HttpContext.Session.GetInt32("Meals").Value;
+            ViewBag.Message = HttpContext.Session.GetString("sessionMessage");
 
             return View("Index");
         }
@@ -87,6 +86,11 @@ namespace DojoDachi.Controllers
             int randomHappiness = rand.Next(5,10);
             HttpContext.Session.SetInt32("Happiness",sessionHappiness+=randomHappiness);
             
+            string sessionMessage = HttpContext.Session.GetString("sessionMessage");
+            Console.WriteLine($"session message is: {sessionMessage}");
+            sessionMessage =  "You played with your DochoDachi Happiness +10, Energy -5";
+            HttpContext.Session.SetString("sessionMessage",sessionMessage);
+            
             return RedirectToAction("Index");
         }
 
@@ -102,6 +106,10 @@ namespace DojoDachi.Controllers
             int randomMeals = rand.Next(1,3);
             HttpContext.Session.SetInt32("Meals",sessionMeal+=randomMeals);
 
+            string sessionMessage = HttpContext.Session.GetString("sessionMessage");
+            Console.WriteLine($"session message is: {sessionMessage}");
+            sessionMessage = "You played with your DochoDachi random meals, Energy -5";
+            HttpContext.Session.SetString("sessionMessage",sessionMessage);
             return RedirectToAction("Index");
         }
 
